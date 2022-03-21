@@ -1,0 +1,66 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// !MEDIA QUERY MANAGER
+
+/**
+ * 
+ *  0 - 600px:          Phone
+ *  600px - 900px:      Tablet Portrait
+ *  900px - 1200px:     Tablet Landscape
+ *  [1200px - 1800px]   is where our normal css apply
+ *  1800px+ :           Big Screen
+ *  
+ *  $breakpoint argument choices
+ ** phone
+ ** tab-port
+ ** tab-land
+ ** big-screen
+ *
+ *
+ ** 1em = 16px
+
+ *! ORDER : Base + Typography > general layout + grid > page layout + components
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    //* 600px
+    @media (max-width: 37.5em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-port {
+    //* 900px
+    @media (max-width: 56.25em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-land {
+    //* 1200px
+    @media (max-width: 75em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == big-screen {
+    //* 1800px
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
