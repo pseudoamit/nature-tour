@@ -11,6 +11,9 @@
   &__logo-box {
     text-align: center;
     margin-bottom: 8rem;
+    @include respond(tab-port) {
+      padding: 2rem;
+    }
   }
 
   &__logo {
@@ -65,9 +68,12 @@
     padding-top: 2rem;
     width: 80%;
     float: right;
+    margin: 0;
 
     @include respond(tab-port) {
       float: none;
+      width: 100%;
+      padding-top: 1rem;
     }
   }
 }
